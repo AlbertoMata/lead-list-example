@@ -1,0 +1,45 @@
+<aura:component implements="force:appHostable">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <aura:registerEvent name="lead_change" type="c:leadchange" />
+    <aura:handler name="change" value="{!v.lead}" action="{!c.handle_lead_change}"/>
+
+    <aura:attribute name="lead" type="Map" />
+    <aura:attribute name="priority_class" type="String" />
+
+
+    <div>
+        <div class="slds-grid slds-wrap slds-p-around_small lead">
+            <div class="slds-size_4-of-12">
+                <!-- Dynamic classes should be bond directly to avoid inconsistencies with the rendering cycle.-->
+                <img aura:id="avatar" src="{!v.lead.avatar}" class="{! join(' ', 'avatar', v.priority_class)}" />
+            </div>
+            <div class="slds-size_5-of-12 slds-grid slds-wrap">
+                <div>
+                    <div class="slds-m-bottom_x-small">
+                        <strong>FX-{!v.lead.code} </strong>
+                    </div>
+                    <div class="slds-m-bottom_xx-small">
+                        <strong>Name: </strong> <span>{!v.lead.name} </span>
+                    </div>
+                    <div class="slds-m-bottom_xx-small">
+                        <strong>Phone: </strong> {!v.lead.phone}
+                    </div>
+                    <div class="slds-m-bottom_xx-small"> <strong>Email: </strong> {!v.lead.email} </div>
+                </div>
+            </div>
+
+            <div class="slds-size_3-of-12 slds-p-around_small slds-grid slds-wrap">
+                <lightning:select aura:id="priority_select" label="Priority" value="{#v.lead.priority}" onchange="{!c.handle_priority_change}" >
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </lightning:select>
+            </div>
+
+        </div>
+    </div>
+
+
+</aura:component>

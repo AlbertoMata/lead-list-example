@@ -1,0 +1,8 @@
+.THIS .lead_view {
+    background-color: white;
+    height: 100%;
+}
+
+.THIS .lead_item + .lead_item {
+    margin-top: 1rem;
+}

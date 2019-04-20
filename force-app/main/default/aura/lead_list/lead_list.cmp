@@ -1,0 +1,76 @@
+<aura:component implements="force:appHostable">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="lead_change" event="c:leadchange" action="{!c.handle_lead_change}"/>
+
+    <!-- Avatars are resource's names stored in the Org-->
+    <aura:attribute name="lead_list" type="List" default="[
+            {
+                'avatar': 'boy',
+                'code': '1100101',
+                'name': 'Robert Shamir',
+                'phone': '110-100-1101',
+                'email': 'foo@bar.com',
+                'priority': '1',
+            },
+            {
+                'avatar': 'girl3',
+                'code': '1010101',
+                'name': 'Alice Rivest',
+                'phone': '110-100-1101',
+                'email': 'quz@quxx.com',
+                'priority': '2',
+            },
+            {
+                'avatar': 'boy6',
+                'code': '0110101',
+                'name': 'Craig Adleman',
+                'phone': '010-001-1001',
+                'email': 'cow@cat.com',
+                'priority': '3',
+            },
+            {
+                'avatar': 'girl11',
+                'code': '0100001',
+                'name': 'Eve Schneider',
+                'phone': '000-100-0001',
+                'email': 'fum@thud.com',
+                'priority': '2',
+            },
+            {
+                'avatar': 'boy20',
+                'code': '0110011',
+                'name': 'Chuck Rabin',
+                'phone': '010-010-0101',
+                'email': 'grunt@spam.com',
+                'priority': '2',
+            }
+
+        ]" />
+
+    <div class="slds-grid slds-wrap slds-p-around_xx-large">
+    
+        <div class="slds-size_1-of-1 slds-p-around_xx-large lead_view">
+    
+            <h1 class="slds-text-heading_large slds-text-align_center slds-p-around_large">
+                Leads
+            </h1>
+
+            <aura:iteration items="{!v.lead_list}" var="lead" >
+                <div class="slds-grid slds-grid_align-center">
+                    <c:lead lead="{#lead}" />
+                </div>
+            </aura:iteration>
+
+        </div>
+    
+    </div>
+
+    <footer>
+        <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a
+                href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0
+                BY</a></div>
+    </footer>
+
+</aura:component>
